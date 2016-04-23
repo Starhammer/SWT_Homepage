@@ -4,7 +4,36 @@
     <meta charset="UTF-8">
     <title>Index</title>
     <link rel="stylesheet" type="text/css" href="indexStyle.css">
-    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script type="text/javascript">
+
+        $('#volltext').bind('click', function() {
+            getTestXML();
+        }
+        $('#prev').bind('click', function() {
+            getTestXML();
+        }
+                function getTestXML() {
+
+                }
+        // Load the xml file using ajax
+        $.ajax({
+            type: "GET",
+            url: "test.xml",
+            dataType: "xml",
+            success: function (xml) {
+
+                // Parse the xml file and get data
+                var xmlDoc = $.parseXML(xml),
+                        $xml = $(xmlDoc);
+                $xml.getElementsByTagName()
+                $xml.find("note").each(function () {
+                    $("#showContent").append($(this).text() + "<br />");
+                });
+            }
+        });
+
+    </script>
 </head>
 <body>
     <header>
@@ -12,17 +41,17 @@
     </header>
     <nav>
         <input type="text" name="searchRequest" value="Eingabe: "/>
-        <input type="submit" name="submit"value="Suche" class="submitSerach" /><br/>
+        <input type="submit" name="submit"value="Suche" id="submitSerach" /><br/>
         <ul class="ModiBar">
-            <li><a href="">Modus 1</a></li>
-            <li><a href="">Modus 2</a></li>
+            <li><a href="" id="volltext">Volltext</a></li>
+            <li><a href="" id="uri">Modus 2</a></li>
             <li><a href="">Modus 3</a></li>
             <li><a href="">Modus 4</a></li>
         </ul>
     </nav>
     <main>
         <h1>Scroll Bar Platzhalter</h1>
-        <div class="showContent">
+        <div id="showContent">
           
         </div>
     </main>
