@@ -19,7 +19,15 @@
                     document.getElementById("showContent").innerHTML = xhttp.responseText;
                 }
             };
-            xhttp.open("GET","http://172.0.0.1:1620/link?q="+str,true);
+            if(document.getElementById('radio1').checked == true){
+                xhttp.open("GET","http://172.0.0.1:1620/link?q="+str,true);
+            }
+            else if(document.getElementById('radio2').checked == true){
+                
+            }
+            else if(document.getElementById('radio3').checked == true){
+                
+            }            
             xhttp.send();
         }  
     
@@ -35,9 +43,9 @@
             
     </form>
     <form>
-        Volltext <input type="radio" name="Methode">
-        URI <input type="radio" name="Methode">
-        N/A <input type="radio" name="Methode">
+        Volltext <input type="radio" name="Methode" id="radio1" checked>
+        URI <input type="radio" name="Methode" id="radio2">
+        N/A <input type="radio" name="Methode" id="radio3">
     </form>
     <main>
         <h1>Scroll Bar Platzhalter</h1>
