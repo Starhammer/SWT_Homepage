@@ -3,80 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <title>Index</title>
-    <link rel="stylesheet" type="text/css" href="indexStyle.css">
-    <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
-    <script type="text/javascript">
-
-        /*  $('#volltext').bind('click', function() {
-            getTestXML();
-        }
-        $('#prev').bind('click', function() {
-            getTestXML();
-        }
-                function getTestXML() {
-
-                }
-        // Load the xml file using ajax
-        $.ajax({
-            type: "GET",
-            url: "test.xml",
-            dataType: "xml",
-            success: function (xml) {
-
-                // Parse the xml file and get data
-                var xmlDoc = $.parseXML(xml),
-                        $xml = $(xmlDoc);
-                $xml.getElementsByTagName()
-                $xml.find("note").each(function () {
-                    $("#showContent").append($(this).text() + "<br />");
-                });
-            }
-        }); */
-        
-      
-
-    </script>  
-    <script>
+    <link rel="stylesheet" type="text/css" href="indexStyle.css"> 
+   <script type="text/javascript">
       //function for AJAX respond and recieving respond
         function showResult(str){
             var xhttp;
-            if(str.length == 0) {
-                document.getElementById("showContent").innerHTML = "";
+            //document.getElementById("showContent").innerHTML = "test3";
+            if(str == 0) {
+                document.getElementById("showContent").innerHTML = "test";
                 return;
             }
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200){
-                    document.getElementById("schowContent").innerHTML = xhttp.responseText;
+                    document.getElementById("showContent").innerHTML = "test";
                 }
             };
             xhttp.open("GET","http://172.0.0.1:1620/link?q="+str,true);
             xhttp.send();
         }  
     
-    </script>        
+    </script>      
 </head>
 <body>
     <header>
         <h1>EMM 16</h1>
     </header>
-    <nav>
-        <form onsubmit="showResult('searchRequest')">
-            <input type="text" name="searchRequest" value="Eingabe: "/>
-            <input type="submit" value="Suche" id="submitSerach" /><br/>
+    <form action="javascript:showResult(this.value);">
+        <input type="text" name="searchRequest" value="Eingabe: "/>
+        <input type="submit" value="Suche" id="submitSerach" /><br/>
             
-        </form>
-        <ul class="ModiBar">
-            <li><a href="" id="volltext">Volltext</a></li>
-            <li><a href="" id="uri">Modus 2</a></li>
-            <li><a href="">Modus 3</a></li>
-            <li><a href="">Modus 4</a></li>
-        </ul>
-    </nav>
+    </form>
     <main>
         <h1>Scroll Bar Platzhalter</h1>
         <div id="showContent">
-          
+            
         </div>
     </main>
     <footer>
