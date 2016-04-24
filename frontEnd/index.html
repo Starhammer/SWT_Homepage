@@ -7,7 +7,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script type="text/javascript">
 
-        $('#volltext').bind('click', function() {
+        /*  $('#volltext').bind('click', function() {
             getTestXML();
         }
         $('#prev').bind('click', function() {
@@ -31,17 +31,41 @@
                     $("#showContent").append($(this).text() + "<br />");
                 });
             }
-        });
+        }); */
+        
+      
 
-    </script>
+    </script>  
+    <script>
+      //function for AJAX respond and recieving respond
+        function showResult(str){
+            var xhttp;
+            if(str.length == 0) {
+                document.getElementById("showContent").innerHTML = "";
+                return;
+            }
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (xhttp.readyState == 4 && xhttp.status == 200){
+                    document.getElementById("schowContent").innerHTML = xhttp.responseText;
+                }
+            };
+            xhttp.open("GET","http://172.0.0.1:1620/link?q="+str,true);
+            xhttp.send();
+        }  
+    
+    </script>        
 </head>
 <body>
     <header>
         <h1>EMM 16</h1>
     </header>
     <nav>
-        <input type="text" name="searchRequest" value="Eingabe: "/>
-        <input type="submit" name="submit"value="Suche" id="submitSerach" /><br/>
+        <form onsubmit="showResult('searchRequest')">
+            <input type="text" name="searchRequest" value="Eingabe: "/>
+            <input type="submit" value="Suche" id="submitSerach" /><br/>
+            
+        </form>
         <ul class="ModiBar">
             <li><a href="" id="volltext">Volltext</a></li>
             <li><a href="" id="uri">Modus 2</a></li>
