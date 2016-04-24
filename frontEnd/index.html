@@ -8,15 +8,15 @@
       //function for AJAX respond and recieving respond
         function showResult(str){
             var xhttp;
-            //document.getElementById("showContent").innerHTML = "da"+str;
-            if(str == "") {
-                document.getElementById("showContent").innerHTML = "no input";
+            //document.getElementById("showContent").innerHTML = "test3";
+            if(str == 0) {
+                document.getElementById("showContent").innerHTML = "test";
                 return;
             }
             xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
                 if (xhttp.readyState == 4 && xhttp.status == 200){
-                    document.getElementById("showContent").innerHTML = xhttp.responseText;
+                    document.getElementById("showContent").innerHTML = "test";
                 }
             };
             xhttp.open("GET","http://172.0.0.1:1620/link?q="+str,true);
@@ -30,15 +30,10 @@
     <header>
         <h1>EMM 16</h1>
     </header>
-    <form action="javascript:showResult(document.getElementById('a').value);">
-        <input type="text" name="searchRequest" value="Eingabe: " id="a"/>
-        <input type="submit" value="Suche"  /><br/>
+    <form action="javascript:showResult(this.value);">
+        <input type="text" name="searchRequest" value="Eingabe: "/>
+        <input type="submit" value="Suche" id="submitSerach" /><br/>
             
-    </form>
-    <form>
-        Volltext <input type="radio" name="Methode">
-        URI <input type="radio" name="Methode">
-        N/A <input type="radio" name="Methode">
     </form>
     <main>
         <h1>Scroll Bar Platzhalter</h1>
